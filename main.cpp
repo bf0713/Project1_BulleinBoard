@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+
 void manage_board(string input_file, string output_file) {
     
     int width, height;
