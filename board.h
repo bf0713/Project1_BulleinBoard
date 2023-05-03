@@ -12,6 +12,7 @@ class Board {
 
         void print_board();
         void print_job(int job_idx, char job_type, int id);
+        void stack_page(Page page);
 
         //job functions
         void insert_page(int x, int y, int width, int height, int id, char content);
@@ -25,6 +26,9 @@ class Board {
         char* board; 
 };
 
+void Board::stack_page(Page page){
+    return;
+}
 
 Board::Board(int num_jobs, int width, int height, ofstream& output_stream): output(output_stream) {
     this->width = width;
@@ -84,18 +88,26 @@ void Board::print_job(int job_idx, char job_type, int id) {
 
 
 void Board::insert_page(int x, int y, int width, int height, int id, char content) {
-
+    //Page page(x, y, width, height, id, content);
+    int board_width = this->width;
+    for (int h = y; h < y + height; h++) {
+        for (int w = x; w < x + width; w++) {
+            board[h*board_width + w] = content;
+        }
+    }
+    print_board();
 }
 
 void Board::delete_page(int id) {
     
+    print_board();
 }
 
 void Board::modify_content(int id, char content) {
    
-
+    print_board();
 }
 void Board::modify_position(int id, int x, int y) {
    
-    
+    print_board();
 }
